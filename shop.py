@@ -65,6 +65,18 @@ class Coffee:
             if order.coffee == self:
                 count += 1
         return count
+
+    def average_price(self):
+        total_price = 0.0
+        order_count = 0
+        for order in Order._all_orders:
+            if order.coffee == self:
+                total_price += order.price
+                order_count += 1
+        
+        if order_count == 0:
+            return 0.0
+        return total_price / order_count
     
 class Order:
     _all_orders = []
@@ -97,3 +109,18 @@ class Order:
     @property
     def coffee(self):
         return self._coffee
+    
+
+
+
+coffee1 = Coffee("Espresso")
+coffee2 = Coffee("Latte")
+
+customer1 = Customer("Dan")
+customer2 = Customer("Imani")
+
+print(f"Created coffee: {coffee1.name}")
+print(f"Created coffee: {coffee2.name}")
+
+print(f"Created customer: {customer1.name}")
+print(f"Created customer: {customer2.name}")
