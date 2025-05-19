@@ -14,6 +14,13 @@ class Customer:
             raise ValueError("Name must be between 1 and 15 characters")
         self._name = name
 
+    def orders(self):
+        customer_orders = []
+        for order in Order._all_orders:
+            if order.customer == self:
+                customer_orders.append(order)
+        return customer_orders
+
 class Coffee:
     def __init__(self, name):
         if not isinstance(name, str):
