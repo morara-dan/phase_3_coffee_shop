@@ -13,3 +13,15 @@ class Customer:
         if not (1 <= len(name) <= 15):
             raise ValueError("Name must be between 1 and 15 characters")
         self._name = name
+
+class Coffee:
+    def __init__(self, name):
+        if not isinstance(name, str):
+            raise TypeError("Name must be a string")
+        if len(name) < 3:
+            raise ValueError("Name must be at least 3 characters long")
+        self._name = name
+
+    @property
+    def name(self):
+        return self._name
