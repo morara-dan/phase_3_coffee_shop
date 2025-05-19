@@ -47,6 +47,14 @@ class Coffee:
             if order.coffee == self:
                 coffee_orders.append(order)
         return coffee_orders
+
+    def customers(self):
+        coffee_customers = []
+        for order in Order._all_orders:
+            if order.coffee == self:
+                if order.customer not in coffee_customers:
+                    coffee_customers.append(order.customer)
+        return coffee_customers
     
 class Order:
     _all_orders = []
