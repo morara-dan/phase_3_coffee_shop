@@ -29,6 +29,9 @@ class Customer:
                     ordered_coffees.append(order.coffee)
         return ordered_coffees
 
+    def create_order(self, coffee, price):
+        return Order(self, coffee, price)
+
 class Coffee:
     def __init__(self, name):
         if not isinstance(name, str):
@@ -55,6 +58,13 @@ class Coffee:
                 if order.customer not in coffee_customers:
                     coffee_customers.append(order.customer)
         return coffee_customers
+
+    def num_orders(self):
+        count = 0
+        for order in Order._all_orders:
+            if order.coffee == self:
+                count += 1
+        return count
     
 class Order:
     _all_orders = []
