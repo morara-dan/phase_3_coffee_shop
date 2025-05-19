@@ -40,6 +40,13 @@ class Coffee:
     @property
     def name(self):
         return self._name
+
+    def orders(self):
+        coffee_orders = []
+        for order in Order._all_orders:
+            if order.coffee == self:
+                coffee_orders.append(order)
+        return coffee_orders
     
 class Order:
     _all_orders = []
